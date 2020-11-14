@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CryptoRSA.RSA\CryptoRSA.RSA.csproj" />
+    <ProjectReference Include="..\CryptoRSA.Utils\CryptoRSA.Utils.csproj" />
+  </ItemGroup>
+
+</Project>

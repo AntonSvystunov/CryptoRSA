@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30611.23
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CryptoRSA", "CryptoRSA\CryptoRSA.csproj", "{99A2337C-7FF3-479E-AE77-407F9E257787}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CryptoRSA.Utils", "CryptoRSA.Utils\CryptoRSA.Utils.csproj", "{FF90FDF2-C57B-46FC-A387-3C026EADF7BD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoRSA.RSA", "CryptoRSA.RSA\CryptoRSA.RSA.csproj", "{31B6C8EB-CB1D-463E-A37D-D569AB8438FF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{99A2337C-7FF3-479E-AE77-407F9E257787}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99A2337C-7FF3-479E-AE77-407F9E257787}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99A2337C-7FF3-479E-AE77-407F9E257787}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99A2337C-7FF3-479E-AE77-407F9E257787}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF90FDF2-C57B-46FC-A387-3C026EADF7BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF90FDF2-C57B-46FC-A387-3C026EADF7BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF90FDF2-C57B-46FC-A387-3C026EADF7BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF90FDF2-C57B-46FC-A387-3C026EADF7BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31B6C8EB-CB1D-463E-A37D-D569AB8438FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31B6C8EB-CB1D-463E-A37D-D569AB8438FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31B6C8EB-CB1D-463E-A37D-D569AB8438FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31B6C8EB-CB1D-463E-A37D-D569AB8438FF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C0D9F9C3-9BCD-4863-86BB-E842339ECE46}
+	EndGlobalSection
+EndGlobal
