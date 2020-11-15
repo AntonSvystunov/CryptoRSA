@@ -1,5 +1,7 @@
-﻿using CryptoRSA.Utils;
+﻿using CryptoHash.SHA256C;
+using CryptoRSA.Utils;
 using System;
+using System.Linq;
 using System.Numerics;
 using System.Security.Cryptography;
 
@@ -69,6 +71,8 @@ namespace CryptoRSA.RSA
 
         public bool DecryptDirect { get; set; } = false;
 
+        public int HashOutputSize => 32;
+
         public RSAProvider()
         {
             KeySize = 256;
@@ -114,7 +118,7 @@ namespace CryptoRSA.RSA
 
         public byte[] Encrypt(byte[] rgb, bool fOAEP)
         {
-            var message = FromBigEndian(rgb);
+            BigInteger message = fOAEP ? FromBigEndian(OAEPEncrypt(rgb)) : FromBigEndian(rgb);
             var cipher = CoreEncrypt(message);
             return ToBigEndian(cipher);
         }
@@ -122,6 +126,62 @@ namespace CryptoRSA.RSA
         private BigInteger CoreEncrypt(BigInteger m)
         {
             return BigInteger.ModPow(m, rsaParameters.Exponent, rsaParameters.Modulus);
+        }
+
+        private byte[] OAEPEncrypt(byte[] message)
+        {
+            var modLen = rsaParameters.Modulus.GetByteCount();
+
+            byte[] r = new byte[HashOutputSize];
+            RandomNumberGenerator.Fill(r);
+
+            var msize = modLen - r.Length - 1;
+            var m = new byte[msize];
+            m.Initialize();
+            Array.Copy(message, m, message.Length);
+
+            using var sha256 = new SHA256C();
+            var X = XorArray(m, sha256.ComputeHash(r));
+            sha256.Initialize();
+            var Y = XorArray(r, sha256.ComputeHash(X));
+
+            return X.Concat(Y).ToArray();
+        }
+
+        private byte[] OAEPDecrypt(byte[] cipher)
+        {
+            var modLen = rsaParameters.Modulus.GetByteCount();
+
+            var msize = modLen - HashOutputSize - 1;
+
+            var X = new byte[msize];
+            var Y = new byte[HashOutputSize];
+
+            Array.Copy(cipher, 0, X, 0, msize);
+            Array.Copy(cipher, msize, Y, 0, Y.Length);
+
+            using var sha256 = new SHA256C();
+            var r = XorArray(Y, sha256.ComputeHash(X));
+            sha256.Initialize();
+            var m = XorArray(X, sha256.ComputeHash(r));
+
+            var i = m.Length - 1;
+            while (m[i] == 0)
+            {
+                --i;
+            }
+
+            return m.Take(i + 1).ToArray();
+        }
+
+        private byte[] XorArray(byte[] a, byte[] b)
+        {
+            var result = (byte[])a.Clone();
+            for (int i = 0; i < b.Length; i++)
+            {
+                result[i] ^= b[i];
+            }
+            return result;
         }
 
         private BigInteger CoreDecrypt(BigInteger c, bool direct = false)
@@ -144,7 +204,14 @@ namespace CryptoRSA.RSA
         {
             var cipher = FromBigEndian(rgb);
             var message = CoreDecrypt(cipher, DecryptDirect);
-            return ToBigEndian(message);
+            var result = ToBigEndian(message);
+
+            if (fOAEP)
+            {
+                result = OAEPDecrypt(result);
+            }
+
+            return result;
         }
 
         public RsaParameters GetParameters()

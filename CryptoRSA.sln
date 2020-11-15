@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CryptoRSA", "CryptoRSA\Cryp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CryptoRSA.Utils", "CryptoRSA.Utils\CryptoRSA.Utils.csproj", "{FF90FDF2-C57B-46FC-A387-3C026EADF7BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoRSA.RSA", "CryptoRSA.RSA\CryptoRSA.RSA.csproj", "{31B6C8EB-CB1D-463E-A37D-D569AB8438FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CryptoRSA.RSA", "CryptoRSA.RSA\CryptoRSA.RSA.csproj", "{31B6C8EB-CB1D-463E-A37D-D569AB8438FF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CryptoHash.SHA256C", "CryptoHash.SHA256C\CryptoHash.SHA256C.csproj", "{D8401459-0A8C-4CC7-A5D7-376A5D0F376E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{31B6C8EB-CB1D-463E-A37D-D569AB8438FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{31B6C8EB-CB1D-463E-A37D-D569AB8438FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{31B6C8EB-CB1D-463E-A37D-D569AB8438FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8401459-0A8C-4CC7-A5D7-376A5D0F376E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8401459-0A8C-4CC7-A5D7-376A5D0F376E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8401459-0A8C-4CC7-A5D7-376A5D0F376E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8401459-0A8C-4CC7-A5D7-376A5D0F376E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
